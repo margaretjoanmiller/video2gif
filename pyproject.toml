@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "gifmak3r"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pillow = "^10.0.0"
+yt-dlp = "^2023.7.6"
+ffmpeg-python = "^0.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+gifmak3r = 'gifmak3r.main:run'
