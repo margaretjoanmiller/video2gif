@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "video2gif"
-version = "0.1.0"
+version = "1.0.0"
 description = "a simple program that converts a video to gif. it will also download a video for you using yt-dlp. Depends on ffmpeg"
 authors = ["Mae Miller <maeborow@posteo.net>"]
 readme = "README.md"
