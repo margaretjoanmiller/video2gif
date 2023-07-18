@@ -4,7 +4,6 @@ import ffmpeg
 import os
 import validators
 import yt_dlp
-import uuid
 
 parser = argparse.ArgumentParser()
 parser.add_argument("video", help="url or path of the video you'd like to gif-ify")
