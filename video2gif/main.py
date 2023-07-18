@@ -4,15 +4,22 @@ import ffmpeg
 import os
 import validators
 import yt_dlp
+import uuid
 
 parser = argparse.ArgumentParser()
 parser.add_argument("video", help="url or path of the video you'd like to gif-ify")
 parser.add_argument("start", type=lambda d: datetime.datetime.strptime(d, '%M:%S'), help="start time in minutes:seconds")
 parser.add_argument("end", type=lambda d: datetime.datetime.strptime(d, '%M:%S'), help="end time in minutes:seconds")
+parser.add_argument("--output", required=False, help="output file")
 args = parser.parse_args()
 
 start_sec = int(datetime.timedelta(minutes=args.start.minute, seconds=args.start.second).total_seconds())
 end_sec = int(datetime.timedelta(minutes=args.end.minute, seconds=args.end.second).total_seconds())
+
+if args.output:
+    outputFile = args.output
+else:
+    outputFile = "result/output.gif"
 
 if validators.url(args.video):
     URLS = [args.video]
@@ -42,7 +49,7 @@ stream = ffmpeg.filter(
          dither='heckbert',
          new='False',
          )
-stream = ffmpeg.output(stream, 'result/output.gif', framerate=30)
+stream = ffmpeg.output(stream, outputFile, framerate=30)
 
 
 def run() -> None:
